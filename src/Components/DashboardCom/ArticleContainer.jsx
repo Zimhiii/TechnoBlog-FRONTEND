@@ -2,6 +2,7 @@ import React from "react";
 import { PiHandsClappingBold, PiHandsClappingFill } from "react-icons/pi";
 import { IoShareSocial } from "react-icons/io5";
 import { FaRegBookmark, FaBookmark } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function ArticleContainer() {
   const text = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis
@@ -34,9 +35,12 @@ export default function ArticleContainer() {
           <h4>People in Figma</h4>
         </div>
         <div className="py-[10px]">
-          <h1 className="font-roboto text-[26px] font-black text-black">
+          <Link
+            to="/article/detail"
+            className="font-roboto text-[26px] font-black text-black"
+          >
             Article Title 1
-          </h1>
+          </Link>
 
           <h3 className="font-normal text-[16px] text-black text-opacity-75">
             {shortenedText}
