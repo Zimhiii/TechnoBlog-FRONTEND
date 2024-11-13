@@ -2,18 +2,26 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Impor Link dengan benar
 import NavSearch from "./NavSearch";
 import { GiScrollQuill } from "react-icons/gi";
+import SignUpPop from "../POPUPCOM/SignUpPop";
+import LoginPop from "../POPUPCOM/LoginPop";
+import EditProfilePop from "../POPUPCOM/EditProfilePop";
 
 const navbar = [
   { name: "Categories", link: "/" }, // Tambahkan nama halaman untuk ditampilkan
   { name: "Write", link: "/Write" },
   { name: "Sign in", link: "/" },
+  { name: "Profile", link: "/" },
 ];
 
 export default function Navbar() {
+  const [isPopOpen, setIsPopOpen] = useState(false);
+  const [isSignInPopOpen, setIsSignInPopOpen] = useState(false);
+  const [isProfilePopOpen, setIsProfilePopOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
 
   const handleLogin = () => {
     setIsLogin(!isLogin);
+    setIsPopOpen(true);
     console.log(isLogin);
   };
 
@@ -30,7 +38,15 @@ export default function Navbar() {
             key={index}
             className="text-black font-normal font-nunito text-[14px] px-4 py-2"
           >
-            <Link to={item.link}>{item.name}</Link>
+            <Link
+              onClick={
+                // item.name == "Sign in" ? () => setIsSignInPopOpen(true) : null
+                item.name == "Profile" ? () => setIsProfilePopOpen(true) : null
+              }
+              to={item.link}
+            >
+              {item.name}
+            </Link>
           </div>
         ))}
         {/* {isLogin ? (
@@ -50,6 +66,21 @@ export default function Navbar() {
           Get Started
         </button>
       </div>
+      {isPopOpen && (
+        <SignUpPop
+          onClose={() => setIsPopOpen(false)}
+          onClose2={(bool) => setIsSignInPopOpen(bool)}
+        />
+      )}
+      {isSignInPopOpen && (
+        <LoginPop
+          onClose={() => setIsSignInPopOpen(false)}
+          onClose2={(bool) => setIsPopOpen(bool)}
+        />
+      )}
+      {isProfilePopOpen && (
+        <EditProfilePop onClose={() => setIsProfilePopOpen(false)} />
+      )}
     </div>
   );
 }

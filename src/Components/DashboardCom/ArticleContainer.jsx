@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { PiHandsClappingBold, PiHandsClappingFill } from "react-icons/pi";
 import { IoShareSocial } from "react-icons/io5";
 import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import SharePop from "../POPUPCOM/SharePop";
 
 export default function ArticleContainer() {
+  const [isPopOpen, setIsPopOpen] = useState(false);
+
   const text = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis
                 laboriosam tempora sint, sed vero, repudiandae necessitatibus quas
                 quae beatae voluptatem labore dolor, possimus cumque consectetur?
@@ -37,7 +40,7 @@ export default function ArticleContainer() {
         <div className="py-[10px]">
           <Link
             to="/article/detail"
-            className="font-roboto text-[26px] font-black text-black"
+            className="font-roboto text-[26px] font-black text-black hover:underline transition-all duration-200"
           >
             Article Title 1
           </Link>
@@ -49,23 +52,28 @@ export default function ArticleContainer() {
 
         <div className="text-[12px] flex justify-between items-center py-[18px]">
           <h4>21 Juli, 2024</h4>
-          <div className="flex gap-[6px] items-center">
+          <div className="flex gap-[6px] items-center hover:border-b-[1px] hover:border-black">
             <PiHandsClappingBold className="w-[15px] h-[15px]" />
             <h4>999</h4>
           </div>
-          <div className="flex gap-[6px] items-center">
+          <div
+            className="flex gap-[6px] items-center hover:border-b-[1px] hover:border-black cursor-pointer"
+            onClick={() => setIsPopOpen(true)}
+          >
             <IoShareSocial className="w-[15px] h-[17px]" />
             <h4>Share</h4>
           </div>
-          <div className="flex gap-[6px] items-center">
+          <div className="flex gap-[6px] items-center hover:border-b-[1px] hover:border-black">
             <FaRegBookmark className="w-[15px] h-[17px]" />
             <h4>Save</h4>
           </div>
         </div>
       </div>
-      <div className="w-4/12 flex justify-center items-center">
+      <div className="w-4/12 flex justify-center items-center hover:border-b-[1px] hover:border-black">
         {/* <div className="w-[182px] h-[115px] bg-dasar3"></div> */}
       </div>
+
+      {isPopOpen && <SharePop onClose={() => setIsPopOpen(false)} id={1} />}
     </div>
   );
 }
