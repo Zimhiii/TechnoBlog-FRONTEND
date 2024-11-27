@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import DefaultLayout from "./Layout/DefaultLayout";
 import Dashboard from "./Pages/Dashboard";
 import Article from "./Pages/Article";
@@ -6,6 +6,7 @@ import ArticleDetail from "./Pages/ArticleDetail";
 import NotFound from "./Pages/NotFound";
 import Write from "./Pages/Write";
 import ProfilePage from "./Pages/ProfilePage";
+import DashboardHimatepa from "./HIMATEPA/dashboardHimatepa";
 
 export const router = createBrowserRouter([
   {
@@ -39,5 +40,20 @@ export const router = createBrowserRouter([
   {
     path: "*",
     element: <NotFound />,
+  },
+
+  {
+    path: "himatepa",
+    element: (
+      <div>
+        <Outlet />
+      </div>
+    ),
+    children: [
+      {
+        path: "home",
+        element: <DashboardHimatepa />,
+      },
+    ],
   },
 ]);

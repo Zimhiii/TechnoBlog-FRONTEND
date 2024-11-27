@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/src/HIMATEPA/assets/Nunito-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal; /* Normal */
+}
+@font-face {
+  font-family: "SegoeUI";
+  src: url("/src/HIMATEPA/assets/Nunito-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal; /* Normal */
+}
+@font-face {
+  font-family: "SegoeUIBold";
+  src: url("/src/HIMATEPA/assets/Segoe UI Bold.ttf") format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal; /* Normal */
+}
